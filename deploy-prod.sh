@@ -16,12 +16,12 @@ fi
 
 # 2. 기존 컨테이너 중지
 echo "### 기존 컨테이너 중지 중..."
-docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml down --remove-orphans
 echo "✅ 기존 컨테이너가 중지되었습니다."
 
 # 3. 최신 이미지 빌드
 echo "### 이미지 빌드 중..."
-docker compose -f docker-compose.prod.yml build --no-cache
+docker compose -f docker-compose.prod.yml build
 echo "✅ 이미지 빌드가 완료되었습니다."
 
 # 4. 운영환경 시작
@@ -40,16 +40,16 @@ docker compose -f docker-compose.prod.yml ps
 echo ""
 echo "=== 서비스 상태 확인 ==="
 echo "🔍 Next.js 컨테이너 로그 (최근 5줄):"
-docker logs aphennet-nextjs --tail=5 2>/dev/null || echo "Next.js 컨테이너가 아직 시작되지 않았습니다."
+docker logs apnhi-nextjs --tail=5 2>/dev/null || echo "Next.js 컨테이너가 아직 시작되지 않았습니다."
 
 echo ""
 echo "🔍 Node.js 컨테이너 로그 (최근 5줄):"
-docker logs aphennet-nodejs --tail=5 2>/dev/null || echo "Node.js 컨테이너가 아직 시작되지 않았습니다."
+docker logs apnhi-nodejs --tail=5 2>/dev/null || echo "Node.js 컨테이너가 아직 시작되지 않았습니다."
 
 echo ""
 echo "=== 배포 완료! ==="
-echo "🌐 프론트엔드: http://aphennet.likeweb.co.kr:3000"
-echo "🔌 API: http://aphennetapi.likeweb.co.kr:3001"
+echo "🌐 프론트엔드: http://new.apnhi.net:3000"
+echo "🔌 API: http://api.apnhi.net:3001"
 echo ""
 echo "📋 유용한 명령어:"
 echo "  - 컨테이너 상태 확인: docker compose -f docker-compose.prod.yml ps"

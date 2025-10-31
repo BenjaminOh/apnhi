@@ -18,16 +18,16 @@
 ```bash
 ./start-dev.sh
 ```
-- **접속 URL**: http://aphennet.likeweb.co.kr:3000
-- **API URL**: http://aphennetapi.likeweb.co.kr:3001
+- **접속 URL**: http://apnhi.likeweb.co.kr:3000
+- **API URL**: http://apnhiapi.likeweb.co.kr:3001
 - **특징**: HTTP만 사용, Hot Reload 활성화
 
 ### 운영환경 시작
 ```bash
 ./start-prod.sh
 ```
-- **접속 URL**: http://aphennet.likeweb.co.kr:3000
-- **API URL**: http://aphennetapi.likeweb.co.kr:3001
+- **접속 URL**: http://apnhi.likeweb.co.kr:3000
+- **API URL**: http://apnhiapi.likeweb.co.kr:3001
 - **특징**: HTTP 사용, 직접 포트 노출
 
 ## 🔧 환경별 차이점
@@ -35,7 +35,7 @@
 | 구분 | 개발환경 | 운영환경 |
 |------|----------|----------|
 | **프로토콜** | HTTP | HTTP |
-| **API URL** | http://aphennetapi.likeweb.co.kr:3001 | http://aphennetapi.likeweb.co.kr:3001 |
+| **API URL** | http://apnhiapi.likeweb.co.kr:3001 | http://apnhiapi.likeweb.co.kr:3001 |
 | **Hot Reload** | ✅ 활성화 | ❌ 비활성화 |
 | **볼륨 마운트** | ✅ 소스코드 실시간 동기화 | ❌ 빌드된 이미지 사용 |
 | **포트 노출** | 직접 포트 노출 | 직접 포트 노출 |

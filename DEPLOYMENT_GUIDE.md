@@ -10,8 +10,8 @@
 - **디스크**: 최소 20GB 여유공간
 
 ### 2. 도메인 설정
-- `aphennet.likeweb.co.kr` → 서버 IP
-- `aphennetapi.likeweb.co.kr` → 서버 IP
+- `apnhi.likeweb.co.kr` → 서버 IP
+- `apnhiapi.likeweb.co.kr` → 서버 IP
 
 ## 🛠️ 배포 단계
 
@@ -32,10 +32,10 @@ newgrp docker
 ```bash
 # 프로젝트 클론 또는 업로드
 git clone <repository-url>
-cd aphennet
+cd apnhi
 
 # 또는 SCP로 업로드
-scp -r ./aphennet user@server:/home/user/
+scp -r ./apnhi user@server:/home/user/
 ```
 
 ### 3단계: 환경변수 설정
@@ -83,12 +83,12 @@ docker compose -f docker-compose.prod.yml restart nextjs
 
 ## 🌐 접속 정보
 
-- **프론트엔드**: http://aphennet.likeweb.co.kr:3000
-- **API**: http://aphennetapi.likeweb.co.kr:3001
+- **프론트엔드**: http://apnhi.likeweb.co.kr:3000
+- **API**: http://apnhiapi.likeweb.co.kr:3001
 - **데이터베이스**: localhost:3306
-  - 사용자: `aphennet`
-  - 비밀번호: `aphennet!@34`
-  - 데이터베이스: `aphennet_db`
+  - 사용자: `apnhi`
+  - 비밀번호: `apnhi!@34`
+  - 데이터베이스: `apnhi_db`
 
 ## 🚨 문제 해결
 
@@ -112,10 +112,10 @@ sudo journalctl --vacuum-time=7d
 ### 3. 데이터베이스 연결 문제
 ```bash
 # MariaDB 상태 확인
-docker exec aphennet-mariadb mysql -u root -p -e "SHOW DATABASES;"
+docker exec apnhi-mariadb mysql -u root -p -e "SHOW DATABASES;"
 
 # 연결 테스트
-docker exec aphennet-nodejs node -e "console.log('DB connection test')"
+docker exec apnhi-nodejs node -e "console.log('DB connection test')"
 ```
 
 ## 📊 모니터링
@@ -123,7 +123,7 @@ docker exec aphennet-nodejs node -e "console.log('DB connection test')"
 ### 헬스체크
 ```bash
 # API 헬스체크
-curl http://aphennetapi.likeweb.co.kr:3001/health
+curl http://apnhiapi.likeweb.co.kr:3001/health
 ```
 
 ### 리소스 사용량
@@ -149,10 +149,10 @@ git pull origin main
 ### 데이터베이스 백업
 ```bash
 # 백업 생성
-docker exec aphennet-mariadb mysqldump -u root -p aphennet_db > backup_$(date +%Y%m%d_%H%M%S).sql
+docker exec apnhi-mariadb mysqldump -u root -p apnhi_db > backup_$(date +%Y%m%d_%H%M%S).sql
 
 # 복원
-docker exec -i aphennet-mariadb mysql -u root -p aphennet_db < backup_file.sql
+docker exec -i apnhi-mariadb mysql -u root -p apnhi_db < backup_file.sql
 ```
 
 ## 📞 지원

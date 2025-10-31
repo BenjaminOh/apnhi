@@ -4,15 +4,15 @@ services:
 
     # Next.js 프론트엔드 (운영환경)
     react-app:
-        container_name: aphennet-nextjs
+        container_name: apnhi-nextjs
         build:
             context: ./fe
             dockerfile: Dockerfile
             target: production
             args:
                 NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL_PROD:-https://api.aphen.net}
-                NEXT_PUBLIC_SITE_ID: ${NEXT_PUBLIC_SITE_ID:-aphennet}
-                NEXT_PUBLIC_MAINT_NAME: ${NEXT_PUBLIC_MAINT_NAME:-Aphennet}
+                NEXT_PUBLIC_SITE_ID: ${NEXT_PUBLIC_SITE_ID:-apnhi}
+                NEXT_PUBLIC_MAINT_NAME: ${NEXT_PUBLIC_MAINT_NAME:-apnhi}
                 NEXT_PUBLIC_ENCRYPTION_KEY: ${NEXT_PUBLIC_ENCRYPTION_KEY:-your_encryption_key}
         restart: always
         ports:
@@ -24,13 +24,11 @@ services:
         env_file:
             - ./.env
         networks:
-            - aphennet-network
-        depends_on:
-            - mariadb
+            - apnhi-network
 
     # Node.js 백엔드 (운영환경)
     node-app:
-        container_name: aphennet-nodejs
+        container_name: apnhi-nodejs
         build:
             context: ./be
             dockerfile: Dockerfile
@@ -45,9 +43,7 @@ services:
         env_file:
             - ./.env
         networks:
-            - aphennet-network
-        depends_on:
-            - mariadb
+            - apnhi-network
         healthcheck:
             test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
             interval: 30s
@@ -58,29 +54,6 @@ services:
             - ./be/upload:/app/upload
             - ./be/storage:/app/storage
 
-    # MariaDB (운영환경) - MariaDB 최신 버전 사용
-    mariadb:
-        container_name: aphennet-mariadb
-        image: mariadb:10.11
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-aphennet_root!@34}
-            MYSQL_DATABASE: ${DB_NAME:-aphennet_db}
-            MYSQL_USER: ${DB_USER:-aphennet}
-            MYSQL_PASSWORD: ${DB_PASS:-aphennet!@34}
-            TZ: Asia/Seoul
-        ports:
-            - "${DB_EXPOSE_PORT:-3306}:3306"
-        volumes:
-            - mariadb_data:/var/lib/mysql
-            - ./mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-        networks:
-            - aphennet-network
-        healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
-            interval: 10s
-            timeout: 5s
-            retries: 5
 
 volumes:
     mariadb_data:
@@ -88,4 +61,4 @@ volumes:
     nodejs_node_modules:
     
 networks:
-    aphennet-network:
+    apnhi-network:

@@ -3,15 +3,15 @@ version: "3.8"
 services:
     # Next.js 프론트엔드 (개발환경)
     react-app:
-        container_name: aphennet-nextjs-dev
+        container_name: apnhi-nextjs-dev
         build:
             context: ./fe
             dockerfile: Dockerfile
             target: development
             args:
                 NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.aphen.net}
-                NEXT_PUBLIC_SITE_ID: ${NEXT_PUBLIC_SITE_ID:-aphennet}
-                NEXT_PUBLIC_MAINT_NAME: ${NEXT_PUBLIC_MAINT_NAME:-Aphennet}
+                NEXT_PUBLIC_SITE_ID: ${NEXT_PUBLIC_SITE_ID:-apnhi}
+                NEXT_PUBLIC_MAINT_NAME: ${NEXT_PUBLIC_MAINT_NAME:-apnhi}
                 NEXT_PUBLIC_ENCRYPTION_KEY: ${NEXT_PUBLIC_ENCRYPTION_KEY:-LnsSEX1tg3A3OMD4/qdtbapFwF3abNfA84xUJ2M/1mw=}
         restart: always
         ports:
@@ -31,11 +31,11 @@ services:
         env_file:
             - ./.env 
         networks:
-            - aphennet-network
+            - apnhi-network
 
     # Node.js 백엔드 (개발환경) - 운영 DB 사용
     node-app:
-        container_name: aphennet-nodejs-dev
+        container_name: apnhi-nodejs-dev
         build:
             context: ./be
             dockerfile: Dockerfile
@@ -57,7 +57,7 @@ services:
         env_file:
             - ./.env
         networks:
-            - aphennet-network
+            - apnhi-network
         healthcheck:
             test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
             interval: 30s
@@ -71,4 +71,4 @@ volumes:
     upload_data:
 
 networks:
-    aphennet-network:
+    apnhi-network:

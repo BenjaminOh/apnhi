@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+fe/package-lock.json
+be/package-lock.json
+
+# IDE
+.idea/
+.vscode/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+**/.DS_Store
+
+# Docker
+docker-compose.override.yml
+
+# SSL Certificates
+certbot/conf/
+certbot/www/
+
+# Logs
+*.log
+logs/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Temporary files
+*.tmp
+*.temp

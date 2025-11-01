@@ -206,6 +206,7 @@ const createSwaggerRouter = (yamlFilePath, options = {}) => {
             persistAuthorization: true,
             ...options.swaggerOptions,
         },
+        customSiteTitle: swaggerSpec.info?.title || '아시아평화와역사연구소',
         ...options,
     };
 

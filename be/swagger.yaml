@@ -1088,7 +1088,7 @@ paths:
                   schema:
                       type: string
                       description: '사이트 ID'
-                      example: 'aphen'
+                      example: 'apnhi'
                 - in: path
                   name: c_lang
                   schema:
@@ -3238,7 +3238,7 @@ paths:
                                 c_web_title:
                                     type: string
                                     description: '웹브라우저타이틀'
-                                    example: 'Aphen'
+                                    example: 'Apnhi'
                                 c_ceo:
                                     type: string
                                     description: '대표자'

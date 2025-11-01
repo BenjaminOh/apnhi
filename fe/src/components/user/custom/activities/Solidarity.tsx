@@ -9,7 +9,7 @@ export default function Solidarity() {
             <div className="p-[40px_20px_120px] md:p-[60px_28px_160px] xl:pt-[80px]">
                 <div className="mx-auto max-w-[1360px] xl:flex xl:justify-end xl:pl-[560px]">
                     <div className="text-[20px] md:text-[24px] xl:w-[680px]">
-                        <span className="text-[24px] font-[700] md:text-[28px]">아시아평화와역사교육연대는</span>
+                        <span className="text-[24px] font-[700] md:text-[28px]">아시아평화와역사교육연구소는</span>
                         <br />
                         <br />
                         동아시아의 역사인식을 공유하기 위해 역사NGO세계대회, <br />

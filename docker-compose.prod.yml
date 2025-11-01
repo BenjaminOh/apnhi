@@ -44,6 +44,7 @@ services:
             - ./.env
         networks:
             - apnhi-network
+            - aphennet-network
         healthcheck:
             test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
             interval: 30s
@@ -62,3 +63,7 @@ volumes:
     
 networks:
     apnhi-network:
+    # 외부 MariaDB 컨테이너 네트워크 (external)
+    aphennet-network:
+        external: true
+        name: aphennet_aphennet-network

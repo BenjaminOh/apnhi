@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 개발서버 빠른 재시작 스크립트 (빌드 없이)
+# 개발서버 재시작 스크립트 (캐시 없이 빌드)
 set -e
 
 echo "=== 개발서버 빠른 재시작 ==="
@@ -13,12 +13,17 @@ echo "### 기존 컨테이너 중지 중..."
 docker compose -f docker-compose.dev.yml down --remove-orphans
 echo "✅ 기존 컨테이너가 중지되었습니다."
 
-# 2. 컨테이너 재시작 (빌드 없이)
-echo "### 컨테이너 재시작 중..."
-docker compose -f docker-compose.dev.yml up -d --build
-echo "✅ 모든 컨테이너가 재시작되었습니다."
+# 2. 캐시 없이 이미지 빌드
+echo "### 캐시 없이 이미지 빌드 중..."
+docker compose -f docker-compose.dev.yml build --no-cache
+echo "✅ 이미지 빌드가 완료되었습니다."
 
-# 3. 상태 확인
+# 3. 컨테이너 시작
+echo "### 컨테이너 시작 중..."
+docker compose -f docker-compose.dev.yml up -d
+echo "✅ 모든 컨테이너가 시작되었습니다."
+
+# 4. 상태 확인
 echo "### 상태 확인 중..."
 sleep 5
 

@@ -1,7 +1,7 @@
 {
-    "name": "basic_solution",
+    "name": "apnhi",
     "version": "1.0.0",
-    "description": "basic solution",
+    "description": "apnhi",
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",

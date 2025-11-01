@@ -1,9 +1,9 @@
 /*
-// Project      : Basic Solution
+// Project      : apnhi
 // Copyright    : likeweb
 // FileName     : app.js
 // StartDate    : 2023.08.23 ash, 2025.05.12 chy
-// Discription  : Basic Solution REST API
+// Discription  : apnhi REST API
 //                베이직 솔루션
 */
 const http = require('http');
@@ -50,11 +50,12 @@ app.use(requestIp.mw());
 
 const corsOptions = {
     origin: [
-        'http://localhost:3000',
-        'http://localhost:3001',
-        'https://aphen.net',
-        'https://www.aphen.net',  // 추가
-        'https://api.aphen.net',
+        'http://localhost:3010',
+        'http://localhost:3011',
+        'https://apnhi.net',
+        'https://www.apnhi.net',  // 추가
+        'https://api.apnhi.net',
+        'https://new.apnhi.net',
     ],
     methods: ['GET', 'PUT', 'POST', 'DELETE'],
     credentials: true,
@@ -172,7 +173,7 @@ app.get('/health', (req, res) => {
 
 app.get('/', (req, res) => {
     res.send(
-        `Welcome to LIKE WEB BASIC REST API VERSION: ${
+        `Welcome to APNHI REST API VERSION: ${
             process.env.NODE_CONTAINER_NAME ? process.env.NODE_CONTAINER_NAME : '알 수 없는 버전'
         }`,
     );
@@ -230,5 +231,5 @@ app.use(errorHandler.routesStatusCode);
 app.use(errorHandler.statusCodeReturn);
 
 app.listen(PORT, () => {
-    console.log(`This server is LIKE WEB BASIC REST API server: http://localhost:${PORT}`);
+    console.log(`This server is APNHI REST API server: http://localhost:${PORT}`);
 });

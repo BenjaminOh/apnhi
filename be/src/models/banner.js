@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
          },
          b_title: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.TEXT,
             allowNull: true,
          },
          b_s_date: {

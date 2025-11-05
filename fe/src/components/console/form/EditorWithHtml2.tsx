@@ -29,7 +29,7 @@ export default function EditorWithHtml2({
     return (
         <>
             <Tabs
-                list={["CH에디터", "HTML"]}
+                list={["에디터", "HTML"]}
                 activeIdx={type === "html" ? 1 : 0}
                 handleClick={idx => onTypeChange(idx === 1 ? "html" : "editor")}
             />

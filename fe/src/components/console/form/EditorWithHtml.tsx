@@ -46,7 +46,7 @@ export default function EditorWithHtml({
 
     return (
         <>
-            <Tabs list={["CH에디터", "HTML"]} activeIdx={isHtmlMode ? 1 : 0} handleClick={handleToggle} />
+            <Tabs list={["에디터", "HTML"]} activeIdx={isHtmlMode ? 1 : 0} handleClick={handleToggle} />
             {isHtmlMode ? (
                 <Textarea
                     value={htmlValue}

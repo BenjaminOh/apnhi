@@ -20,12 +20,14 @@ interface BannerItem {
 }
 
 const swiperStyle = `
+    pb-[64px]
+    xl:pb-0
     [&>.swiper-pagination]:leading-[0]
     [&>.swiper-pagination]:flex
     [&>.swiper-pagination]:gap-[12px]
-    [&>.swiper-pagination]:justify-end
-    [&>.swiper-pagination]:px-[20px]
-    [&>.swiper-pagination]:!bottom-0
+    [&>.swiper-pagination]:justify-start
+    [&>.swiper-pagination]:px-[16px]
+    [&>.swiper-pagination]:!bottom-[16px]
     [&>.swiper-pagination>.swiper-pagination-bullet-active]:!bg-primary 
     [&>.swiper-pagination>.swiper-pagination-bullet]:!mx-0
     [&>.swiper-pagination>.swiper-pagination-bullet]:bg-[#F2F2F2]
@@ -33,18 +35,15 @@ const swiperStyle = `
     md:[&>.swiper-pagination]:px-[28px]
     md:[&>.swiper-pagination]:gap-[12px]
     md:[&>.swiper-pagination>.swiper-pagination-bullet]:size-[16px]
-    xl:[&>.swiper-pagination]:px-0
-    xl:[&>.swiper-pagination]:justify-start
-    xl:[&>.swiper-pagination]:max-w-[1360px]
-    xl:[&>.swiper-pagination]:!left-1/2
-    xl:[&>.swiper-pagination]:!-translate-x-1/2
-    xl:[&>.swiper-pagination]:!bottom-[30%]
+    xl:[&>.swiper-pagination]:px-[40px]
+    xl:[&>.swiper-pagination]:!bottom-[20px]
 `;
 
 export default function MainBanner() {
     const router = useRouter();
     const [type, setType] = useState<"P" | "M">("P");
     const [bannerList, setBannerList] = useState<BannerItem[]>([]);
+    const [activeIndex, setActiveIndex] = useState<number>(0);
     const { data: configBannerData } = useGetBannerList("100", type);
 
     // 디바이스 크기에 따른 타입 설정
@@ -104,57 +103,71 @@ export default function MainBanner() {
     }, [configBannerData]);
 
     return (
-        <>
+        <div className="relative max-w-[1720px] px-[20px] md:px-[28px] min-[1760px]:px-0">
             {bannerList.length > 0 && (
-                <Swiper
-                    loop={true}
-                    className={swiperStyle}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    effect="fade"
-                    fadeEffect={{
-                        crossFade: true,
-                    }}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    }}
-                    modules={[Autoplay, Pagination, EffectFade]}
-                    observer={true}
-                    observeParents={true}
-                >
-                    {bannerList.map((item, index) => {
-                        return (
-                            <SwiperSlide
-                                key={`main_banner_${index}`}
-                                className={`${item.b_url ? "cursor-pointer" : ""}`}
-                                onClick={() => {
-                                    if (item.b_url) {
-                                        if (item.b_url_target === "2") {
-                                            window.open(item.b_url, "_blank", "noopener,noreferrer");
-                                        } else {
-                                            router.push(item.b_url);
+                <>
+                    <Swiper
+                        loop={true}
+                        className={swiperStyle}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        effect="fade"
+                        fadeEffect={{
+                            crossFade: true,
+                        }}
+                        onSlideChange={swiper => {
+                            setActiveIndex(swiper.realIndex);
+                        }}
+                        onInit={swiper => {
+                            setActiveIndex(swiper.realIndex);
+                        }}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        }}
+                        modules={[Autoplay, Pagination, EffectFade]}
+                        observer={true}
+                        observeParents={true}
+                    >
+                        {bannerList.map((item, index) => {
+                            return (
+                                <SwiperSlide
+                                    key={`main_banner_${index}`}
+                                    className={`${item.b_url ? "cursor-pointer" : ""}`}
+                                    onClick={() => {
+                                        if (item.b_url) {
+                                            if (item.b_url_target === "2") {
+                                                window.open(item.b_url, "_blank", "noopener,noreferrer");
+                                            } else {
+                                                router.push(item.b_url);
+                                            }
                                         }
-                                    }
-                                }}
-                            >
-                                <div className="relative flex flex-col gap-[14px] md:gap-[47px] xl:flex-row xl:justify-end">
-                                    <img
-                                        src={`${API_URL}/${item.b_file}`}
-                                        alt={item.b_title}
-                                        className="w-full xl:w-auto"
-                                    />
-                                    <div
-                                        className="whitespace-pre-line px-[20px] text-left text-[24px] font-[700] md:px-[28px] md:text-[48px] xl:absolute xl:left-1/2 xl:top-[30%] xl:mx-auto xl:w-full xl:max-w-[1360px] xl:-translate-x-1/2 xl:px-0 xl:text-[60px]"
-                                        dangerouslySetInnerHTML={{ __html: item.b_title }}
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        );
-                    })}
-                </Swiper>
+                                    }}
+                                >
+                                    <div className="w-full overflow-hidden rounded-[20px] md:rounded-[40px]">
+                                        <img
+                                            src={`${API_URL}/${item.b_file}`}
+                                            alt={item.b_title}
+                                            className={`transition-transform duration-1000 ease-in-out ${
+                                                activeIndex === index ? "scale-[1.1]" : ""
+                                            }`}
+                                        />
+                                    </div>
+                                </SwiperSlide>
+                            );
+                        })}
+                        <div className="absolute bottom-0 left-0 z-[1] min-w-[220px] rounded-[0_20px_0_0] bg-white p-[16px_16px_28px] md:min-w-[480px] md:rounded-[0_40px_0_0] md:p-[16px_20px_40px] xl:min-w-[200px] xl:rounded-[0_60px_0_0] xl:p-[20px_40px_46px]">
+                            <div className="text-[20px] font-[700] md:text-[36px] xl:text-[40px]">
+                                <span className="text-[#23AA4B]">역사대화</span>를 통해
+                                <p className="md:pl-[100px] xl:pl-[120px]">
+                                    <span className="text-[#23AA4B]">평화</span>를 만들어 갑니다.
+                                </p>
+                            </div>
+                        </div>
+                    </Swiper>
+                </>
             )}
-        </>
+        </div>
     );
 }

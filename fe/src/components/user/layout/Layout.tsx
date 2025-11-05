@@ -23,34 +23,34 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const { menuList, setMenuList } = useSiteStore();
     const [siteInfo, setSiteInfo] = useState<SiteInfoItem>(initialSiteInfo);
     const { data: configData } = useGetCategoryList(DEFAULT_LANGUAGE);
-    const { data: siteInfoData } = useGetSiteInfo(SITE_ID, DEFAULT_LANGUAGE, { enabled: !!SITE_ID });
+    // const { data: siteInfoData } = useGetSiteInfo(SITE_ID, DEFAULT_LANGUAGE, { enabled: !!SITE_ID });
 
-    useEffect(() => {
-        if (siteInfoData) {
-            const { c_site_name, c_address, c_tel, c_fax, c_email, c_num, c_ceo } = siteInfoData.data;
-            setSiteInfo({
-                c_site_name,
-                c_ceo,
-                c_address,
-                c_tel,
-                c_fax,
-                c_email,
-                c_num,
-            });
-            setSiteInfoData({
-                c_site_name,
-                c_ceo,
-                c_address,
-                c_tel,
-                c_fax,
-                c_email,
-                c_num,
-            });
-        } else {
-            setSiteInfo(initialSiteInfo);
-            setSiteInfoData(initialSiteInfo);
-        }
-    }, [siteInfoData]); // eslint-disable-line react-hooks/exhaustive-deps
+    // useEffect(() => {
+    //     if (siteInfoData) {
+    //         const { c_site_name, c_address, c_tel, c_fax, c_email, c_num, c_ceo } = siteInfoData.data;
+    //         setSiteInfo({
+    //             c_site_name,
+    //             c_ceo,
+    //             c_address,
+    //             c_tel,
+    //             c_fax,
+    //             c_email,
+    //             c_num,
+    //         });
+    //         setSiteInfoData({
+    //             c_site_name,
+    //             c_ceo,
+    //             c_address,
+    //             c_tel,
+    //             c_fax,
+    //             c_email,
+    //             c_num,
+    //         });
+    //     } else {
+    //         setSiteInfo(initialSiteInfo);
+    //         setSiteInfoData(initialSiteInfo);
+    //     }
+    // }, [siteInfoData]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // 메뉴 목록 조회
     useEffect(() => {

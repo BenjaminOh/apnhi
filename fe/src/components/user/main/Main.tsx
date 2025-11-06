@@ -5,16 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import SupportSection from "@/components/user/common/SupportSection";
 
 import MainBanner from "./-components/MainBanner";
-import MainLink from "./-components/MainLink";
 import MainSection1 from "./-components/MainSection1";
 import MainSection2 from "./-components/MainSection2";
 
 export default function Main() {
-    const sect1Ref = useRef<HTMLDivElement>(null);
-    const sect2Ref = useRef<HTMLDivElement>(null);
     const sect3Ref = useRef<HTMLDivElement>(null);
-    const [sect1On, setSect1On] = useState(false);
-    const [sect2On, setSect2On] = useState(false);
     const [sect3On, setSect3On] = useState(false);
 
     useEffect(() => {
@@ -23,8 +18,6 @@ export default function Main() {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const target = entry.target as HTMLDivElement;
-                        if (target === sect1Ref.current) setSect1On(true);
-                        if (target === sect2Ref.current) setSect2On(true);
                         if (target === sect3Ref.current) setSect3On(true);
                     }
                 });
@@ -35,7 +28,7 @@ export default function Main() {
             },
         );
 
-        const refs = [sect1Ref, sect2Ref, sect3Ref];
+        const refs = [sect3Ref];
         refs.forEach(ref => {
             if (ref.current) {
                 observer.observe(ref.current);
@@ -54,9 +47,8 @@ export default function Main() {
     return (
         <>
             <MainBanner />
-            <MainLink />
-            <MainSection1 sectRef={sect1Ref} sectOn={sect1On} />
-            <MainSection2 sectRef={sect2Ref} sectOn={sect2On} />
+            <MainSection1 />
+            <MainSection2 />
             <SupportSection sectRef={sect3Ref} sectOn={sect3On} />
         </>
     );

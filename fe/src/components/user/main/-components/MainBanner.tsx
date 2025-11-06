@@ -103,7 +103,7 @@ export default function MainBanner() {
     }, [configBannerData]);
 
     return (
-        <div className="relative max-w-[1720px] px-[20px] md:px-[28px] min-[1760px]:px-0">
+        <div className="relative mx-auto max-w-[1720px] px-[20px] md:px-[28px] min-[1760px]:px-0">
             {bannerList.length > 0 && (
                 <>
                     <Swiper

@@ -58,7 +58,7 @@ export default function Location() {
                             </div>
                             <p className="text-[18px] md:text-[20px]">
                                 <span>{siteInfoData.c_email}</span> <br className="md:hidden" />
-                                (아시아평화와역사교육연대, 국내메일)
+                                (아시아평화와역사연구소)
                             </p>
                         </li>
                     </ul>

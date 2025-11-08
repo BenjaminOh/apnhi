@@ -13,8 +13,6 @@ import Greeting from "../custom/intro/Greeting";
 import History from "../custom/intro/History";
 import Location from "../custom/intro/Location";
 import Organization from "../custom/intro/Organization";
-import System from "../custom/japan-distortion-response/System";
-import Timeline from "../custom/japan-distortion-response/Timeline";
 import SubLayout from "./-components/SubLayout";
 import SubTop from "./-components/SubTop";
 
@@ -68,12 +66,6 @@ export default function Sub({
                 <Organization />
             ) : configData?.data?.c_content_type?.[0] === 3 && configData?.data?.file_path === "/intro/History" ? (
                 <History />
-            ) : configData?.data?.c_content_type?.[0] === 3 &&
-              configData?.data?.file_path === "/japan-distortion-response/Timeline" ? (
-                <Timeline />
-            ) : configData?.data?.c_content_type?.[0] === 3 &&
-              configData?.data?.file_path === "/japan-distortion-response/System" ? (
-                <System />
             ) : configData?.data?.c_content_type?.[0] === 4 ? (
                 <PostList category={category} boardType="board" />
             ) : configData?.data?.c_content_type?.[0] === 5 ? (

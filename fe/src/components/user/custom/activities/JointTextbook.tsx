@@ -7,7 +7,6 @@ import jointTextbookImg2 from "@/assets/images/user/jointTextbookImg2.jpg";
 import jointTextbookImg3 from "@/assets/images/user/jointTextbookImg3.jpg";
 import subBannerJointTextbook from "@/assets/images/user/subBannerJointTextbook.jpg";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import SupportSection from "@/components/user/common/SupportSection";
 import SubBanner from "@/components/user/sub/-components/SubBanner";
 
 interface HistoryListItem {
@@ -734,7 +733,6 @@ export default function JointTextbook() {
                     ))}
                 </div>
             </div>
-            <SupportSection sectOn={true} />
         </>
     );
 }

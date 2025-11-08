@@ -1,5 +1,4 @@
 import subBannerSolidarity from "@/assets/images/user/subBannerSolidarity.jpg";
-import SupportSection from "@/components/user/common/SupportSection";
 import SubBanner from "@/components/user/sub/-components/SubBanner";
 
 export default function Solidarity() {
@@ -20,7 +19,6 @@ export default function Solidarity() {
                     </div>
                 </div>
             </div>
-            <SupportSection sectOn={true} />
         </>
     );
 }

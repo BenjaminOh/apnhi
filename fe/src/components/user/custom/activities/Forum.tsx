@@ -3,7 +3,6 @@ import Image from "next/image";
 import scrollImg from "@/assets/images/user/scrollImg.png";
 import subBannerForum from "@/assets/images/user/subBannerForum.jpg";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import SupportSection from "@/components/user/common/SupportSection";
 import SubBanner from "@/components/user/sub/-components/SubBanner";
 
 const items = [
@@ -213,7 +212,6 @@ export default function Forum() {
                     <ScrollBar orientation="horizontal" />
                 </ScrollArea>
             </div>
-            <SupportSection sectOn={true} />
         </>
     );
 }

@@ -1,7 +1,6 @@
 import subBannerSystem1 from "@/assets/images/user/subBannerSystem1.jpg";
 import subBannerSystem2 from "@/assets/images/user/subBannerSystem2.jpg";
 import subBannerSystem3 from "@/assets/images/user/subBannerSystem3.jpg";
-import SupportSection from "@/components/user/common/SupportSection";
 import SubBanner from "@/components/user/sub/-components/SubBanner";
 
 export default function System() {
@@ -143,7 +142,6 @@ export default function System() {
                     </div>
                 </div>
             </div>
-            <SupportSection sectOn={true} />
         </>
     );
 }

@@ -7,7 +7,6 @@ import textbookImg2 from "@/assets/images/user/textbookImg2.jpg";
 import textbookImg3 from "@/assets/images/user/textbookImg3.jpg";
 import textbookImg4 from "@/assets/images/user/textbookImg4.jpg";
 import textbookImg5 from "@/assets/images/user/textbookImg5.jpg";
-import SupportSection from "@/components/user/common/SupportSection";
 import SubBanner from "@/components/user/sub/-components/SubBanner";
 
 export default function Textbook() {
@@ -51,8 +50,8 @@ export default function Textbook() {
                         </p>
                         <p className="pt-[20px] text-[18px] font-[500] text-[#666] md:pt-[48px] md:text-[20px]">
                             일본의 교과서 왜곡은 비단 한국만의 문제도 아니며, 일본만의 문제도 아니기 때문에 한·일 양국
-                            시민 단체들의 연대 활동은 운동본부(현 아시아평화와역사교육연구소) 활동의 기조를 이룬다고 볼 수
-                            있다.
+                            시민 단체들의 연대 활동은 운동본부(현 아시아평화와역사교육연구소) 활동의 기조를 이룬다고 볼
+                            수 있다.
                             <br />
                             <br />
                             그 결과 일본 교과서 개악을 규탄하기 위한 범 아시아 행동의 날과 한·일 공동 시위가 개최됐다.
@@ -271,7 +270,6 @@ export default function Textbook() {
                     </div>
                 </li>
             </ul>
-            <SupportSection sectOn={true} />
         </>
     );
 }

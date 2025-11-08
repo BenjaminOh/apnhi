@@ -3,7 +3,6 @@ import Image from "next/image";
 import scrollImg from "@/assets/images/user/scrollImg.png";
 import subBannerCamp from "@/assets/images/user/subBannerCamp.jpg";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import SupportSection from "@/components/user/common/SupportSection";
 import SubBanner from "@/components/user/sub/-components/SubBanner";
 
 const items = [
@@ -215,7 +214,6 @@ export default function Camp() {
                     <ScrollBar orientation="horizontal" />
                 </ScrollArea>
             </div>
-            <SupportSection sectOn={true} />
         </>
     );
 }

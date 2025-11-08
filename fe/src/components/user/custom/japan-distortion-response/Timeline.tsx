@@ -1,5 +1,4 @@
 import subBannerTimeline from "@/assets/images/user/subBannerTimeline.jpg";
-import SupportSection from "@/components/user/common/SupportSection";
 import SubBanner from "@/components/user/sub/-components/SubBanner";
 
 interface Item {
@@ -205,7 +204,6 @@ export default function Timeline() {
                     </div>
                 </div>
             </div>
-            <SupportSection sectOn={true} />
         </>
     );
 }

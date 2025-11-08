@@ -30,7 +30,6 @@ import history2025 from "@/assets/images/user/history2025.jpg";
 import subBannerHistory from "@/assets/images/user/subBannerHistory.jpg";
 import subBannerLogo from "@/assets/images/user/subBannerLogo.png";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import SupportSection from "@/components/user/common/SupportSection";
 
 interface HistoryListItem {
     date: string;
@@ -1181,7 +1180,6 @@ export default function History() {
                     </div>
                 </div>
             </div>
-            <SupportSection sectOn={true} />
         </>
     );
 }

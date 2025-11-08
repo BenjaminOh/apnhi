@@ -46,7 +46,7 @@ export default function MainSection3() {
     return (
         <div
             ref={sectRef}
-            className="relative mx-auto max-w-[1360px] p-[80px_20px_0] md:p-[90px_28px_138px] xl:p-[120px_0_130px] min-[1400px]:px-0"
+            className="relative mx-auto max-w-[1360px] p-[80px_20px_0] md:p-[90px_28px_138px] xl:p-[120px_28px_130px] min-[1400px]:px-0"
         >
             <div className="mb-[24px] md:mb-[40px]">
                 <p className="font-[500] text-[#23AA4B] md:text-[18px]">With Us</p>
@@ -67,7 +67,7 @@ export default function MainSection3() {
                         활동에 동참해 주세요!
                     </p>
                     <p className="pt-[12px] text-[18px] xl:text-[20px]">
-                        아시아평화와역사교육연대는 <br />
+                        아시아평화와역사교육연대(연구소)는 <br />
                         여러분의 소중한 후원으로 운영됩니다.
                     </p>
                     <a

@@ -57,13 +57,13 @@ export default function Footer({ menuList, siteInfo }: FooterProps) {
                             <p className="min-w-[80px] text-[#666]">이메일</p>
                             <p className="flex-1">
                                 {siteInfo.c_email} <br className="md:hidden" />
+                                (아시아평화와역사연구소)
+                                <br />
+                                japantext@daum.net <br className="md:hidden" />
                                 (아시아평화와역사교육연대, 국내메일)
                                 <br />
                                 japantext@hotmail.com <br className="md:hidden" />
                                 (아시아평화와역사교육연대, 국제메일)
-                                <br />
-                                apnhi@daum.net <br className="md:hidden" />
-                                (아시아평화와역사연구소)
                             </p>
                         </li>
                         <li className="flex md:text-[18px]">

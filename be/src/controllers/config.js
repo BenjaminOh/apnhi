@@ -93,35 +93,72 @@ exports.putConfigSiteUpdate = async (req, res, next) => {
     } = req.body;
 
     try {
+        // c_lang이 undefined인 경우 기본값 'KR' 사용
+        const finalC_lang = c_lang || 'KR';
+
         await db.mariaDBSequelize.transaction(async transaction => {
-            const configLangNUpdate = await i_config_lang.update(
-                {
-                    use_yn: enumConfig.useType.N[0],
-                },
-                {
-                    where: {
-                        site_id: site_id,
-                        site_lang: Array.isArray(site_lang) ? { [Op.notIn]: site_lang } : { [Op.ne]: site_lang },
+            // site_lang이 배열이고 비어있지 않을 때만 업데이트
+            if (Array.isArray(site_lang) && site_lang.length > 0) {
+                const configLangNUpdate = await i_config_lang.update(
+                    {
+                        use_yn: enumConfig.useType.N[0],
                     },
-                    transaction,
-                },
-            );
-
-            const configLangYUpdate = await i_config_lang.update(
-                {
-                    use_yn: enumConfig.useType.Y[0],
-                },
-                {
-                    where: {
-                        site_id: site_id,
-                        site_lang: Array.isArray(site_lang) ? { [Op.in]: site_lang } : site_lang,
+                    {
+                        where: {
+                            site_id: site_id,
+                            site_lang: { [Op.notIn]: site_lang },
+                        },
+                        transaction,
                     },
-                    transaction,
-                },
-            );
+                );
 
-            if (!configLangYUpdate) {
-                return errorHandler.errorThrow(enumConfig.statusErrorCode._404_ERROR[0], '');
+                const configLangYUpdate = await i_config_lang.update(
+                    {
+                        use_yn: enumConfig.useType.Y[0],
+                    },
+                    {
+                        where: {
+                            site_id: site_id,
+                            site_lang: { [Op.in]: site_lang },
+                        },
+                        transaction,
+                    },
+                );
+
+                if (!configLangYUpdate) {
+                    return errorHandler.errorThrow(enumConfig.statusErrorCode._404_ERROR[0], '');
+                }
+            } else if (site_lang && !Array.isArray(site_lang)) {
+                // site_lang이 배열이 아닌 단일 값인 경우
+                const configLangNUpdate = await i_config_lang.update(
+                    {
+                        use_yn: enumConfig.useType.N[0],
+                    },
+                    {
+                        where: {
+                            site_id: site_id,
+                            site_lang: { [Op.ne]: site_lang },
+                        },
+                        transaction,
+                    },
+                );
+
+                const configLangYUpdate = await i_config_lang.update(
+                    {
+                        use_yn: enumConfig.useType.Y[0],
+                    },
+                    {
+                        where: {
+                            site_id: site_id,
+                            site_lang: site_lang,
+                        },
+                        transaction,
+                    },
+                );
+
+                if (!configLangYUpdate) {
+                    return errorHandler.errorThrow(enumConfig.statusErrorCode._404_ERROR[0], '');
+                }
             }
 
             const configUpdate = await i_config.update(
@@ -140,12 +177,12 @@ exports.putConfigSiteUpdate = async (req, res, next) => {
                     c_meta: c_meta,
                     c_meta_tag: c_meta_tag,
                     c_meta_type: c_meta_type,
-                    c_lang: c_lang,
+                    c_lang: finalC_lang,
                 },
                 {
                     where: {
                         site_id: site_id,
-                        c_lang: c_lang,
+                        c_lang: finalC_lang,
                     },
                     transaction,
                     individualHooks: true,

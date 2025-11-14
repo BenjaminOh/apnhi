@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
             },
             c_site_name: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(300),
                 allowNull: true,
             },
             c_web_title: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(300),
                 allowNull: true,
             },
             c_ceo: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(100),
                 allowNull: true,
             },
             c_tel: {
@@ -34,11 +34,11 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: true,
             },
             c_email: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(100),
                 allowNull: true,
             },
             c_address: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(1000),
                 allowNull: true,
             },
             c_fax: {
@@ -50,15 +50,15 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: true,
             },
             c_b_title: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(500),
                 allowNull: true,
             },
             c_meta: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(500),
                 allowNull: true,
             },
             c_meta_tag: {
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(500),
                 allowNull: true,
             },
             c_lang: {

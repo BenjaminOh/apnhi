@@ -13,7 +13,8 @@ exports.getConfigSite = async (req, res, next) => {
     console.log(c_lang);
     console.log(site_id);
     try {
-        const result = await i_config.findOne({
+        // 먼저 지정된 c_lang으로 조회
+        let result = await i_config.findOne({
             attributes: [
                 'c_site_name',
                 'c_web_title',
@@ -36,6 +37,32 @@ exports.getConfigSite = async (req, res, next) => {
                 c_lang: c_lang,
             },
         });
+
+        // 지정된 c_lang으로 찾지 못한 경우, site_id만으로 조회 (fallback)
+        if (!result) {
+            result = await i_config.findOne({
+                attributes: [
+                    'c_site_name',
+                    'c_web_title',
+                    'c_ceo',
+                    'c_tel',
+                    'c_num',
+                    'c_num2',
+                    'c_email',
+                    'c_address',
+                    'c_fax',
+                    'c_manager',
+                    'c_b_title',
+                    'c_meta',
+                    'c_meta_tag',
+                    'c_meta_type',
+                    'c_lang',
+                ],
+                where: {
+                    site_id: site_id,
+                },
+            });
+        }
 
         if (!result) {
             return errorHandler.errorThrow(enumConfig.statusErrorCode._404_ERROR[0], '');

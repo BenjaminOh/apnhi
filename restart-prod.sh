@@ -1,5 +1,7 @@
 #!/bin/bash
 
+docker system prune -a -f 
+
 git pull
 
 # 운영서버 빠른 재시작 스크립트 (빌드 없이)

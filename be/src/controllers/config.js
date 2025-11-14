@@ -9,7 +9,9 @@ const xss = require('xss');
 
 exports.getConfigSite = async (req, res, next) => {
     const site_id = req.params.site_id;
-    const c_lang = req.params.c_lang;
+    const c_lang = req.params.c_lang || 'KR'; 
+    console.log(c_lang);
+    console.log(site_id);
     try {
         const result = await i_config.findOne({
             attributes: [

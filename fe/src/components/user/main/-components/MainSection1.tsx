@@ -35,19 +35,19 @@ const list = [
         img: mainSection1Img2,
     },
     {
-        title: "동아시아 \n공동교재편찬",
+        title: "동아시아 \n공동교재 편찬",
         description: "역사대화를 통해 \n공동의 역사인식을 추구합니다.",
         bg: mainSection1Bg3,
         img: mainSection1Img3,
     },
     {
-        title: "평화포럼",
+        title: "역사인식과 \n동아시아 평화포럼",
         description: "역사인식과 동아시아 평화포럼을 통해 \n평화공존의 미래를 상상합니다.",
         bg: mainSection1Bg4,
         img: mainSection1Img4,
     },
     {
-        title: "청소년 역사체험캠프",
+        title: "동아시아 \n청소년 역사체험캠프",
         description: "동아시아 청소년들이 서로를 이해하고 \n공감대를 만들어 갑니다.",
         bg: mainSection1Bg5,
         img: mainSection1Img5,

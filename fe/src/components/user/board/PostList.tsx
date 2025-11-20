@@ -245,6 +245,16 @@ export default function PostList({ category, boardType }: { category: string; bo
                                     행정안전부
                                 </a>
                             </li>
+                            <li>
+                                <a
+                                    href="https://www.acrc.go.kr/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-[16px] font-[700] text-[#056547] md:text-[18px]"
+                                >
+                                    국민권익위원회
+                                </a>
+                            </li>
                         </ul>
                     )}
                     <div className="flex flex-col gap-[8px] md:flex-row md:items-center md:justify-between">

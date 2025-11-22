@@ -166,6 +166,7 @@ exports.getBoardList = async (req, res, next) => {
                 'b_notice',
                 'b_secret',
                 'b_title',
+                'b_contents',
                 'm_email',
                 'm_name',
                 'b_reply',

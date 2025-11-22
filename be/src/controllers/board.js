@@ -190,6 +190,9 @@ exports.getBoardList = async (req, res, next) => {
         });
 
 		const extractFirstImage = (html) => {
+			if (!html || typeof html !== 'string') {
+				return null;
+			}
 			const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
 			return match ? match[1] : null; // 첫 번째 이미지 src 반환, 없으면 null
 		};

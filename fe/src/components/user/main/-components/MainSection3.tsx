@@ -67,7 +67,7 @@ export default function MainSection3() {
                         활동에 동참해 주세요!
                     </p>
                     <p className="pt-[12px] text-[18px] xl:text-[20px]">
-                        아시아평화와역사교육연대(연구소)는 <br />
+                        아시아평화와역사연구소(연대)는 <br />
                         여러분의 소중한 후원으로 운영됩니다.
                     </p>
                     <a

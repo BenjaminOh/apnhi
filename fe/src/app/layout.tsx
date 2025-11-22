@@ -27,23 +27,23 @@ export async function generateMetadata(): Promise<Metadata> {
         if (!response.ok) {
             return {
                 metadataBase: new URL("https://apnhi.net/"),
-                title: "아시아평화와역사교육연구소",
-                description: "아시아평화와역사교육연구소",
-                keywords: "아시아평화와역사교육연구소",
-                authors: [{ name: "아시아평화와역사교육연구소" }],
+                title: "아시아평화와역사연구소",
+                description: "아시아평화와역사연구소",
+                keywords: "아시아평화와역사연구소",
+                authors: [{ name: "아시아평화와역사연구소" }],
                 robots: "index,follow",
                 openGraph: {
                     type: "website",
                     url: "https://apnhi.net/",
-                    title: "아시아평화와역사교육연구소",
-                    description: "아시아평화와역사교육연구소",
-                    siteName: "아시아평화와역사교육연구소",
+                    title: "아시아평화와역사연구소",
+                    description: "아시아평화와역사연구소",
+                    siteName: "아시아평화와역사연구소",
                     images: ["/og-image.png"],
                 },
                 twitter: {
                     card: "summary",
-                    title: "아시아평화와역사교육연구소",
-                    description: "아시아평화와역사교육연구소",
+                    title: "아시아평화와역사연구소",
+                    description: "아시아평화와역사연구소",
                     images: ["/og-image.png"],
                 },
                 other: {
@@ -58,9 +58,9 @@ export async function generateMetadata(): Promise<Metadata> {
         if (!siteInfo) {
             return {
                 metadataBase: new URL("https://apnhi.net/"),
-                title: "아시아평화와역사교육연구소",
-                description: "아시아평화와역사교육연구소",
-                keywords: "아시아평화와역사교육연구소",
+                title: "아시아평화와역사연구소",
+                description: "아시아평화와역사연구소",
+                keywords: "아시아평화와역사연구소",
             };
         }
 
@@ -68,23 +68,23 @@ export async function generateMetadata(): Promise<Metadata> {
 
         return {
             metadataBase: new URL("https://apnhi.net/"),
-            title: c_b_title || "아시아평화와역사교육연구소",
-            description: c_meta || "아시아평화와역사교육연구소",
-            keywords: c_meta_tag || "아시아평화와역사교육연구소",
-            authors: [{ name: "아시아평화와역사교육연구소" }],
+            title: c_b_title || "아시아평화와역사연구소",
+            description: c_meta || "아시아평화와역사연구소",
+            keywords: c_meta_tag || "아시아평화와역사연구소",
+            authors: [{ name: "아시아평화와역사연구소" }],
             robots: "index,follow",
             openGraph: {
                 type: "website",
                 url: "https://apnhi.net/",
-                title: c_b_title || "아시아평화와역사교육연구소",
-                description: c_meta || "아시아평화와역사교육연구소",
-                siteName: "아시아평화와역사교육연구소",
+                title: c_b_title || "아시아평화와역사연구소",
+                description: c_meta || "아시아평화와역사연구소",
+                siteName: "아시아평화와역사연구소",
                 images: ["/og-image.png"],
             },
             twitter: {
                 card: "summary",
-                title: c_b_title || "아시아평화와역사교육연구소",
-                description: c_meta || "아시아평화와역사교육연구소",
+                title: c_b_title || "아시아평화와역사연구소",
+                description: c_meta || "아시아평화와역사연구소",
                 images: ["/og-image.png"],
             },
             other: {
@@ -94,23 +94,23 @@ export async function generateMetadata(): Promise<Metadata> {
     } catch {
         return {
             metadataBase: new URL("https://apnhi.net/"),
-            title: "아시아평화와역사교육연구소",
-            description: "아시아평화와역사교육연구소",
-            keywords: "아시아평화와역사교육연구소",
-            authors: [{ name: "아시아평화와역사교육연구소" }],
+            title: "아시아평화와역사연구소",
+            description: "아시아평화와역사연구소",
+            keywords: "아시아평화와역사연구소",
+            authors: [{ name: "아시아평화와역사연구소" }],
             robots: "index,follow",
             openGraph: {
                 type: "website",
                 url: "https://apnhi.net/",
-                title: "아시아평화와역사교육연구소",
-                description: "아시아평화와역사교육연구소",
-                siteName: "아시아평화와역사교육연구소",
+                title: "아시아평화와역사연구소",
+                description: "아시아평화와역사연구소",
+                siteName: "아시아평화와역사연구소",
                 images: ["/og-image.png"],
             },
             twitter: {
                 card: "summary",
-                title: "아시아평화와역사교육연구소",
-                description: "아시아평화와역사교육연구소",
+                title: "아시아평화와역사연구소",
+                description: "아시아평화와역사연구소",
                 images: ["/og-image.png"],
             },
             other: {

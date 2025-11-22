@@ -2012,6 +2012,10 @@ paths:
                                     type: integer
                                     description: '게시글 구분 index'
                                     example: 1
+                                b_reg_date:
+                                    type: string
+                                    description: '등록일시 (yyyy.mm.dd 형식, 현재 시간이 자동으로 추가됨)'
+                                    example: '2024.01.15'
             responses:
                 '200':
                     description: ''
@@ -2123,6 +2127,10 @@ paths:
                                     type: string
                                     description: 'T, F'
                                     example: 'T'
+                                b_reg_date:
+                                    type: string
+                                    description: '등록일시 (yyyy.mm.dd 형식, 현재 시간이 자동으로 추가됨)'
+                                    example: '2024.01.15'
             responses:
                 '200':
                     description: ''

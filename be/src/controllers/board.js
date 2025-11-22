@@ -189,12 +189,19 @@ exports.getBoardList = async (req, res, next) => {
             ],
         });
 
+		const extractFirstImage = (html) => {
+			const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+			return match ? match[1] : null; // 첫 번째 이미지 src 반환, 없으면 null
+		};
+
         const formattedResult = result.rows.map((list, index) => ({
             idx: list.idx,
             num: list.b_notice === '1' ? '공지' : result.count - (offset + index),
             category: list.category,
             b_depth: list.b_depth,
             b_title: list.b_title,
+            b_contents: list.b_contents,
+            first_image: extractFirstImage(list.b_contents),
             m_email: list.m_email,
             m_name: list.m_name,
             b_reg_date: moment(list.b_reg_date).format('YYYY.MM.DD'),
@@ -711,6 +718,7 @@ exports.postBoardCreate = async (req, res, next) => {
         b_email_yn,
         b_secret,
         group_id,
+        b_reg_date,
     } = req.body;
 
     try {
@@ -727,6 +735,14 @@ exports.postBoardCreate = async (req, res, next) => {
         const board_b_img = req.files['b_img'];
 
         const processedContents = await utilMiddleware.base64ToImagesPath(b_contents);
+
+        // b_reg_date 처리: yyyy.mm.dd 형식이 있으면 현재 시간(hh:mm:ss)을 붙여서 날짜 형식으로 변환
+        let processedRegDate = null;
+        if (b_reg_date) {
+            const currentTime = moment().format('HH:mm:ss');
+            const dateTimeString = `${b_reg_date} ${currentTime}`;
+            processedRegDate = moment(dateTimeString, 'YYYY.MM.DD HH:mm:ss').toDate();
+        }
 
         let boardCreate;
         await db.mariaDBSequelize.transaction(async transaction => {
@@ -762,6 +778,7 @@ exports.postBoardCreate = async (req, res, next) => {
                     b_secret: b_secret,
                     group_id: group_id ? group_id : null,
                     b_num: newBNum,
+                    b_reg_date: processedRegDate,
                 },
                 { transaction },
             );
@@ -902,6 +919,7 @@ exports.putBoardUpdate = async (req, res, next) => {
 		group_id,
 		pass,
 		b_state,
+		b_reg_date,
 	} = req.body;
 
 	try {
@@ -972,6 +990,14 @@ exports.putBoardUpdate = async (req, res, next) => {
 
 			const processedContents = await utilMiddleware.base64ToImagesPath(b_contents);
 
+			// b_reg_date 처리: yyyy.mm.dd 형식이 있으면 현재 시간(hh:mm:ss)을 붙여서 날짜 형식으로 변환
+			let processedRegDate = null;
+			if (b_reg_date) {
+				const currentTime = moment().format('HH:mm:ss');
+				const dateTimeString = `${b_reg_date} ${currentTime}`;
+				processedRegDate = moment(dateTimeString, 'YYYY.MM.DD HH:mm:ss').toDate();
+			}
+
 			//에디터 이미지 경로 저장
 			if (processedContents.imagePaths) {
 				for (const editFile of processedContents.imagePaths) {
@@ -1003,6 +1029,7 @@ exports.putBoardUpdate = async (req, res, next) => {
 					b_email_yn: b_email_yn,
 					group_id: group_id,
 					b_state: b_state,
+					b_reg_date: processedRegDate,
 				},
 				{
 					where: {

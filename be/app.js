@@ -52,8 +52,8 @@ const corsOptions = {
     origin: [
         'http://localhost:3010',
         'http://localhost:3011',
-        'https://apnhi.net',
-        'https://www.apnhi.net',  // 추가
+        'https://apnhi.net/',
+        'https://www.apnhi.net/',
         'https://api.apnhi.net',
         'https://new.apnhi.net',
     ],

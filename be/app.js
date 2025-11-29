@@ -55,6 +55,8 @@ const corsOptions = {
             'http://localhost:3010',
             'http://localhost:3011',
             'https://apnhi.net',
+            'http://www.apnhi.net',
+            'http://api.apnhi.net',
             'https://www.apnhi.net',
             'https://api.apnhi.net',
             'https://new.apnhi.net',

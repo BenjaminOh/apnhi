@@ -7,6 +7,14 @@ const development = {
     logging: process.env.APP_ENV === 'development' ? console.log : false,
     port: process.env.DB_PORT,
     timezone: '+09:00',
+    dialectOptions: {
+        charset: 'utf8mb4',
+        collate: 'utf8mb4_unicode_ci',
+    },
+    define: {
+        charset: 'utf8mb4',
+        collate: 'utf8mb4_unicode_ci',
+    },
 };
 const maintenance = {
     username: process.env.LW_USER,

@@ -34,6 +34,12 @@ exports.routesStatusCode = (req, res, next) => {
 };
 
 exports.successThrow = (res, msg, data) => {
+    // 응답이 이미 전송되었는지 확인
+    if (res.headersSent) {
+        console.warn('응답이 이미 전송되었습니다. successThrow를 건너뜁니다.');
+        return;
+    }
+    
     res.status(200).json({
         statusCode: enumConfig.statusErrorCode._200_STATUS[0],
         message: msg || enumConfig.statusErrorCode._200_STATUS[1],

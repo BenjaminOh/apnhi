@@ -40,7 +40,11 @@ const SelectBox = React.forwardRef<HTMLButtonElement, SelectBoxProps>(
         const selectClass = twMerge("bg-[#fff] text-[15px] border-[#D9D9D9]", contentClassName);
 
         return (
-            <Select onValueChange={onChange} value={value} defaultValue={defaultValue}>
+            <Select
+                onValueChange={onChange}
+                value={value}
+                {...(value === undefined && defaultValue !== undefined ? { defaultValue } : {})}
+            >
                 <SelectTrigger className={boxClass} ref={ref}>
                     <SelectValue placeholder={placeholder} />
                 </SelectTrigger>

@@ -49,16 +49,34 @@ const PORT = process.env.PORT || 3000;
 app.use(requestIp.mw());
 
 const corsOptions = {
-    origin: [
-        'http://localhost:3010',
-        'http://localhost:3011',
-        'https://apnhi.net/',
-        'https://www.apnhi.net/',
-        'https://api.apnhi.net',
-        'https://new.apnhi.net',
-    ],
-    methods: ['GET', 'PUT', 'POST', 'DELETE'],
+    origin: function (origin, callback) {
+        // 허용할 origin 목록 (슬래시 제거)
+        const allowedOrigins = [
+            'http://localhost:3010',
+            'http://localhost:3011',
+            'https://apnhi.net',
+            'https://www.apnhi.net',
+            'https://api.apnhi.net',
+            'https://new.apnhi.net',
+        ];
+
+        // origin이 없거나 (같은 origin 요청) 허용 목록에 있으면 허용
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            // 슬래시가 있는 경우도 체크 (예: https://apnhi.net/ -> https://apnhi.net)
+            const originWithoutSlash = origin.endsWith('/') ? origin.slice(0, -1) : origin;
+            if (allowedOrigins.includes(originWithoutSlash)) {
+                callback(null, true);
+            } else {
+                console.warn(`CORS: 차단된 origin - ${origin}`);
+                callback(new Error('CORS 정책에 의해 차단되었습니다.'));
+            }
+        }
+    },
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
     credentials: true,
+    optionsSuccessStatus: 200, // 일부 브라우저를 위한 설정
 };
 
 app.set('trust proxy', 1); // 1단계 프록시 신뢰

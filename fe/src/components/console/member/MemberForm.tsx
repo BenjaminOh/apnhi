@@ -345,7 +345,7 @@ export default function MemberForm({
                                                 <ul className="flex flex-wrap">
                                                     <li className="w-1/4 py-[12px]">
                                                         <Checkbox
-                                                            checked={field.value.includes("1")}
+                                                            checked={(field.value || []).includes("1")}
                                                             onChange={e => {
                                                                 const currentValue = field.value || [];
                                                                 handleChangeMenuAuth(
@@ -360,7 +360,7 @@ export default function MemberForm({
                                                     </li>
                                                     <li className="w-1/4 py-[12px]">
                                                         <Checkbox
-                                                            checked={field.value.includes("2")}
+                                                            checked={(field.value || []).includes("2")}
                                                             onChange={e => {
                                                                 const currentValue = field.value || [];
                                                                 handleChangeMenuAuth(
@@ -375,7 +375,7 @@ export default function MemberForm({
                                                     </li>
                                                     <li className="w-1/4 py-[12px]">
                                                         <Checkbox
-                                                            checked={field.value.includes("3")}
+                                                            checked={(field.value || []).includes("3")}
                                                             onChange={e => {
                                                                 const currentValue = field.value || [];
                                                                 handleChangeMenuAuth(
@@ -390,7 +390,7 @@ export default function MemberForm({
                                                     </li>
                                                     <li className="w-1/4 py-[12px]">
                                                         <Checkbox
-                                                            checked={field.value.includes("4")}
+                                                            checked={(field.value || []).includes("4")}
                                                             onChange={e => {
                                                                 const currentValue = field.value || [];
                                                                 handleChangeMenuAuth(
@@ -405,7 +405,7 @@ export default function MemberForm({
                                                     </li>
                                                     <li className="w-1/4 py-[12px]">
                                                         <Checkbox
-                                                            checked={field.value.includes("5")}
+                                                            checked={(field.value || []).includes("5")}
                                                             onChange={e => {
                                                                 const currentValue = field.value || [];
                                                                 handleChangeMenuAuth(
@@ -420,7 +420,7 @@ export default function MemberForm({
                                                     </li>
                                                     <li className="w-1/4 py-[12px]">
                                                         <Checkbox
-                                                            checked={field.value.includes("6")}
+                                                            checked={(field.value || []).includes("6")}
                                                             onChange={e => {
                                                                 const currentValue = field.value || [];
                                                                 handleChangeMenuAuth(
@@ -435,7 +435,7 @@ export default function MemberForm({
                                                     </li>
                                                     <li className="w-1/4 py-[12px]">
                                                         <Checkbox
-                                                            checked={field.value.includes("7")}
+                                                            checked={(field.value || []).includes("7")}
                                                             onChange={e => {
                                                                 const currentValue = field.value || [];
                                                                 handleChangeMenuAuth(

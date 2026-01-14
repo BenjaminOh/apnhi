@@ -1,3 +1,4 @@
+import UserPopup from "../popup/UserPopup";
 import MainBanner from "./-components/MainBanner";
 import MainSection1 from "./-components/MainSection1";
 import MainSection2 from "./-components/MainSection2";
@@ -10,6 +11,7 @@ export default function Main() {
             <MainSection1 />
             <MainSection2 />
             <MainSection3 />
+            <UserPopup />
         </>
     );
 }

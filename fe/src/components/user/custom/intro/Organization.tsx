@@ -67,17 +67,6 @@ export default function Organization() {
                                     이사
                                 </th>
                                 <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
-                                    이신철
-                                </td>
-                                <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
-                                    아시아평화와역사교육연대 운영위원
-                                </td>
-                            </tr>
-                            <tr className="border-b border-[#999999]">
-                                <th className="bg-[#FAFAFA] p-[20px_8px] text-[18px] font-[500] md:text-[24px]">
-                                    이사
-                                </th>
-                                <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
                                     김숙진
                                 </td>
                                 <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
@@ -152,32 +141,10 @@ export default function Organization() {
                                     연구위원
                                 </th>
                                 <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
-                                    이신철
-                                </td>
-                                <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
-                                    아시아평화와역사교육연대 운영위원
-                                </td>
-                            </tr>
-                            <tr className="border-b border-[#999999]">
-                                <th className="bg-[#FAFAFA] p-[20px_8px] text-[18px] font-[500] md:text-[24px]">
-                                    연구위원
-                                </th>
-                                <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
                                     김지훈
                                 </td>
                                 <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
                                     아시아평화와역사교육연대 중국위원장
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="bg-[#FAFAFA] p-[20px_8px] text-[18px] font-[500] md:text-[24px]">
-                                    연구위원
-                                </th>
-                                <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
-                                    한혜인
-                                </td>
-                                <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
-                                    아시아평화와역사교육연대 운영위원
                                 </td>
                             </tr>
                         </tbody>

@@ -1,41 +1,49 @@
-version: "3.8"
-
 services:
 
-    # Next.js 프론트엔드 (운영환경)
+    # Next.js (Web)
     react-app:
-        container_name: apnhi-nextjs
+        container_name: apnhi_web_${COLOR:-blue}
         build:
             context: ./fe
             dockerfile: Dockerfile
             target: production
             args:
-                NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL_PROD:-https://api.apnhi.net}
+                NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL_PROD:-https://new.apnhi.net}
                 NEXT_PUBLIC_SITE_ID: ${NEXT_PUBLIC_SITE_ID:-apnhi}
-                NEXT_PUBLIC_MAINT_NAME: ${NEXT_PUBLIC_MAINT_NAME:-apnhi}
+                NEXT_PUBLIC_MAINT_NAME: ${NEXT_PUBLIC_MAINT_NAME:-Apnhinet}
                 NEXT_PUBLIC_ENCRYPTION_KEY: ${NEXT_PUBLIC_ENCRYPTION_KEY:-your_encryption_key}
         restart: always
         ports:
-            - "${REACT_EXPOSE_PORT:-3000}:3000"
+            - "${WEB_PORT:-3000}:3000"
         environment:
             - NODE_ENV=production
-            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL_PROD:-https://api.apnhi.net}
+            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL_PROD:-https://new.apnhi.net}
             - TZ=Asia/Seoul
         env_file:
             - ./.env
         networks:
-            - apnhi-network
+            - app-network
+        deploy:
+            resources:
+                limits:
+                    memory: 1G
+                    cpus: "2.0"
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"
 
-    # Node.js 백엔드 (운영환경)
+    # Node.js (API)
     node-app:
-        container_name: apnhi-nodejs
+        container_name: apnhi_api_${COLOR:-blue}
         build:
             context: ./be
             dockerfile: Dockerfile
             target: production
         restart: always
         ports:
-            - "${NODE_EXPOSE_PORT:-3001}:3000"
+            - "${API_PORT:-3001}:3000"
         environment:
             - NODE_ENV=production
             - TZ=Asia/Seoul
@@ -43,27 +51,27 @@ services:
         env_file:
             - ./.env
         networks:
-            - apnhi-network
-            - aphennet-network
+            - app-network
         healthcheck:
             test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
-            interval: 30s
+            interval: 60s
             timeout: 10s
             retries: 3
-            start_period: 40s
+            start_period: 60s
         volumes:
             - ./be/upload:/app/upload
             - ./be/storage:/app/storage
+        deploy:
+            resources:
+                limits:
+                    memory: 1G
+                    cpus: "2.0"
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"
 
-
-volumes:
-    mariadb_data:
-    nextjs_node_modules:
-    nodejs_node_modules:
-    
 networks:
-    apnhi-network:
-    # 외부 MariaDB 컨테이너 네트워크 (external)
-    aphennet-network:
+    app-network:
         external: true
-        name: aphennet_aphennet-network

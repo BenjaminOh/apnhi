@@ -782,7 +782,7 @@ exports.postBoardCreate = async (req, res, next) => {
                     b_secret: b_secret,
                     group_id: group_id ? group_id : null,
                     b_num: newBNum,
-                    b_reg_date: processedRegDate,
+                    ...(processedRegDate && { b_reg_date: processedRegDate }),
                 },
                 { transaction },
             );
@@ -1033,7 +1033,7 @@ exports.putBoardUpdate = async (req, res, next) => {
 					b_email_yn: b_email_yn,
 					group_id: group_id,
 					b_state: b_state,
-					b_reg_date: processedRegDate,
+					...(processedRegDate && { b_reg_date: processedRegDate }),
 				},
 				{
 					where: {

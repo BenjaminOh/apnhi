@@ -8,7 +8,7 @@ services:
             dockerfile: Dockerfile
             target: production
             args:
-                NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL_PROD:-https://new.apnhi.net}
+                NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL_PROD:-https://api.apnhi.net}
                 NEXT_PUBLIC_SITE_ID: ${NEXT_PUBLIC_SITE_ID:-apnhi}
                 NEXT_PUBLIC_MAINT_NAME: ${NEXT_PUBLIC_MAINT_NAME:-Apnhinet}
                 NEXT_PUBLIC_ENCRYPTION_KEY: ${NEXT_PUBLIC_ENCRYPTION_KEY:-your_encryption_key}
@@ -17,7 +17,7 @@ services:
             - "${WEB_PORT:-3000}:3000"
         environment:
             - NODE_ENV=production
-            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL_PROD:-https://new.apnhi.net}
+            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL_PROD:-https://api.apnhi.net}
             - TZ=Asia/Seoul
         env_file:
             - ./.env

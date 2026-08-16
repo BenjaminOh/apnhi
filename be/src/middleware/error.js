@@ -93,6 +93,11 @@ exports.handleMulterError = (err, req, res, next) => {
                 statusCode = enumConfig.statusErrorCode._422_ERROR[0];
                 message = '필드 이름이 누락되었습니다.';
                 break;
+            case 'INVALID_FILE_TYPE':
+                // multer.js의 fileFilter가 거부한 경우 — 사유를 그대로 전달한다
+                statusCode = enumConfig.statusErrorCode._422_ERROR[0];
+                message = err.message || '허용되지 않는 파일 형식입니다.';
+                break;
             default:
                 statusCode = enumConfig.statusErrorCode._500_ERROR[0];
                 message = `파일 업로드 에러: ${err.message}`;
@@ -118,6 +123,9 @@ exports.handleMulterUpload = uploadFunction => (req, res, next) => {
         if (err) {
             return exports.handleMulterError(err, req, res, next);
         }
+        // multer는 multipart가 아닌 요청에서 req.files를 세팅하지 않고 통과시킨다.
+        // 컨트롤러들이 req.files['b_file'] 처럼 바로 접근하므로 기본값을 보장한다.
+        if (!req.files) req.files = {};
         next();
     });
 };

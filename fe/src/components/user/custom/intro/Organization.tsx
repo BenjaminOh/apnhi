@@ -147,6 +147,39 @@ export default function Organization() {
                                     아시아평화와역사교육연대 중국위원장
                                 </td>
                             </tr>
+                            <tr className="border-b border-[#999999]">
+                                <th className="bg-[#FAFAFA] p-[20px_8px] text-[18px] font-[500] md:text-[24px]">
+                                    연구위원
+                                </th>
+                                <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
+                                    홍종욱
+                                </td>
+                                <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
+                                    아시아평화와역사교육연대 공동교재위원장, 서울대학교 인문학연구원 HK교수
+                                </td>
+                            </tr>
+                            <tr className="border-b border-[#999999]">
+                                <th className="bg-[#FAFAFA] p-[20px_8px] text-[18px] font-[500] md:text-[24px]">
+                                    연구위원
+                                </th>
+                                <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
+                                    박삼헌
+                                </td>
+                                <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
+                                    건국대학교 교수
+                                </td>
+                            </tr>
+                            <tr>
+                                <th className="bg-[#FAFAFA] p-[20px_8px] text-[18px] font-[500] md:text-[24px]">
+                                    연구위원
+                                </th>
+                                <td className="border-l border-r border-[#ddd] p-[16px_5px] text-center text-[18px] font-[500] md:text-[20px]">
+                                    이세영
+                                </td>
+                                <td className="p-[16px_8px] text-[#666] md:px-[20px] md:text-[18px]">
+                                    연세대학교 국학연구원 연구교수
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
